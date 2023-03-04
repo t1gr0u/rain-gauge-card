@@ -1,6 +1,6 @@
 {
   "name": "rain-gauge-card",
-  "version": "1.4.1",
+  "version": "0.0.1",
   "description": "A Lovelace card that shows the rain gauge for Home Assistant",
   "keywords": [
     "home-assistant",
