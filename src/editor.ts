@@ -49,6 +49,14 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
     return this._config?.entity || '';
   }
 
+  get _hourly_rate_entity(): string {
+    return this._config?.hourly_rate_entity || '';
+  }
+
+  get _border_colour(): string {
+    return this._config?.border_colour || '';
+  }
+
   get _show_warning(): boolean {
     return this._config?.show_warning || false;
   }
@@ -67,9 +75,10 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
 
     return html`
       <mwc-select
+        required
         naturalMenuWidth
         fixedMenuPosition
-        label="Entity (Required)"
+        label="Daily entity (Required)"
         .configValue=${'entity'}
         .value=${this._entity}
         @selected=${this._valueChanged}
@@ -85,6 +94,25 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
         .configValue=${'name'}
         @input=${this._valueChanged}
       ></mwc-textfield>
+      <mwc-textfield
+        label="Border colour (Optional)"
+        .value=${this._border_colour}
+        .configValue=${'border_colour'}
+        @input=${this._valueChanged}
+      ></mwc-textfield>
+      <mwc-select
+        naturalMenuWidth
+        fixedMenuPosition
+        label="Hourly Rate Entity (Optional)"
+        .configValue=${'hourly_rate_entity'}
+        .value=${this._hourly_rate_entity}
+        @selected=${this._valueChanged}
+        @closed=${(ev) => ev.stopPropagation()}
+      >
+        ${entities.map((hourly_rate_entity) => {
+          return html`<mwc-list-item .value=${hourly_rate_entity}>${hourly_rate_entity}</mwc-list-item>`;
+        })}
+      </mwc-select>
       <mwc-formfield .label=${`Toggle warning ${this._show_warning ? 'off' : 'on'}`}>
         <mwc-switch
           .checked=${this._show_warning !== false}

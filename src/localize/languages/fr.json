@@ -1,0 +1,10 @@
+{
+    "common": {
+        "version": "Version",
+        "invalid_configuration": "Configuration invalide",
+        "show_warning": "Afficher les Warnings",
+        "show_error": "Afficher les Erreurs",
+        "rate": "Taux",
+        "total": "Total"
+    }
+}
