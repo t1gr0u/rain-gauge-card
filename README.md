@@ -92,6 +92,7 @@ The following languages are supported:
 | --------- | ---------- | --------- | ----------------------------------------------------------------------------------- |
 | English   | `en`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
 | French    | `fr`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
+| Portuguese| `pt`       | v1.0.0    | [@ViPeR5000](https://github.com/viper5000)                                          |
 
 
 ## Thanks to
