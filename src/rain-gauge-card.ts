@@ -85,7 +85,14 @@ export class RainGaugeCard extends LitElement {
 
     const entityId = this.config.entity;
     const entityState = entityId ? this.hass.states[entityId] : undefined;
-    const stateValue: number = entityState ? parseFloat(entityState.state) : 0;
+    let stateValue: number = entityState ? parseFloat(entityState.state) : 0;
+
+    let unitOfMeasurement = 'mm'
+    if (this.config.is_imperial) {
+      unitOfMeasurement = 'in'
+      const stateValueConverted = stateValue * 25.4
+      stateValue = Math.round((stateValueConverted + Number.EPSILON) * 100) / 100
+    }
 
     // 180 min - 0 max
     const maxLevel = 40
@@ -144,11 +151,11 @@ export class RainGaugeCard extends LitElement {
             <div>
               <p>
                 <span style="font-weight: bold;">${localize('common.total', '', '', this.config.language)}</span><br/>
-                ${stateValue} mm
+                ${stateValue} ${unitOfMeasurement}
               </p>
             </div>
             <div>
-              ${this._showHourlyRate(hourlyRateEntityState, hourlyRateStateValue)}
+              ${this._showHourlyRate(hourlyRateEntityState, hourlyRateStateValue, unitOfMeasurement)}
             </div>
           </div>
         </div>
@@ -156,11 +163,11 @@ export class RainGaugeCard extends LitElement {
     `;
   }
 
-  private _showHourlyRate(hourlyRateEntityState: any | undefined, hourlyRateStateValue: number): TemplateResult | void {
+  private _showHourlyRate(hourlyRateEntityState: any | undefined, hourlyRateStateValue: number, unitOfMeasurement: string): TemplateResult | void {
     if (hourlyRateEntityState === undefined) return
     return html`<p>
       <span style="font-weight: bold;">${localize('common.rate', '', '', this.config.language)}</span><br/>
-      ${hourlyRateStateValue} mm/h
+      ${hourlyRateStateValue} ${unitOfMeasurement}/h
     </p>`
   }
 

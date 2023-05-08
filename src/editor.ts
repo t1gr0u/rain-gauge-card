@@ -50,6 +50,10 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
     return this._config?.entity || '';
   }
 
+  get _is_imperial(): boolean {
+    return this._config?.is_imperial || false;
+  }
+
   get _language(): string {
     return this._config?.language || '';
   }
@@ -99,6 +103,13 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
         .configValue=${'name'}
         @input=${this._valueChanged}
       ></mwc-textfield>
+      <mwc-formfield .label=${`Is imperial?`}>
+        <mwc-switch
+          .checked=${this._is_imperial !== false}
+          .configValue=${'is_imperial'}
+          @change=${this._valueChanged}
+        ></mwc-switch>
+      </mwc-formfield>
       <mwc-select
         naturalMenuWidth
         fixedMenuPosition

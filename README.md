@@ -67,6 +67,7 @@ entity: sensor.rain_daily
 | show_warning      | boolean | **Optional** | Show what a warning looks like for the card | `false`             |
 | entity            | string  | **Required** | Home Assistant entity ID.                   | `none`              |
 | language          | string  | **Optional** | The 2 character that determines the language| `en`                |
+| is_imperial       | boolean | **Optional** | Switch to inches (`in`) instead of `mm`     | `false`             |
 | hourly_rate_entity| string  | **Optional** | Home Assistant entity ID to hourly rate     | `none`              |
 | tap_action        | object  | **Optional** | Action to take on tap                       | `action: more-info` |
 | hold_action       | object  | **Optional** | Action to take on hold                      | `none`              |
