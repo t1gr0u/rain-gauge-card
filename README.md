@@ -92,6 +92,7 @@ The following languages are supported:
 | --------- | ---------- | --------- | ----------------------------------------------------------------------------------- |
 | English   | `en`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
 | French    | `fr`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
+| Slovenian | `sl`       | v1.0.0    | [@mnheia](https://github.com/mnheia)                                                |
 
 
 ## Thanks to
