@@ -11,13 +11,21 @@ const languages: any = {
   sl: sl,
 };
 
-export function localize(string: string, search = '', replace = ''): string {
-  const lang = (localStorage.getItem('selectedLanguage') || 'en').replace(/['"]+/g, '').replace('-', '_');
+export const CARD_LANGUAGES = [...Object.keys(languages), ''].sort();
 
+export function getLocalLanguage(): string {
+  return (localStorage.getItem('selectedLanguage') || 'en').replace(/['"]+/g, '').replace('-', '_');
+}
+
+export function localize(string: string, search = '', replace = '', language = '' ): string {
   let translated: string;
 
+  if (language === '') {
+    language = getLocalLanguage();
+  }
+
   try {
-    translated = string.split('.').reduce((o, i) => o[i], languages[lang]);
+    translated = string.split('.').reduce((o, i) => o[i], languages[language]);
   } catch (e) {
     translated = string.split('.').reduce((o, i) => o[i], languages['en']);
   }

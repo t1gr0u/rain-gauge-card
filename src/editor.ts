@@ -9,6 +9,7 @@ import { formfieldDefinition } from '../elements/formfield';
 import { selectDefinition } from '../elements/select';
 import { switchDefinition } from '../elements/switch';
 import { textfieldDefinition } from '../elements/textfield';
+import { CARD_LANGUAGES } from './localize/localize';
 
 @customElement('rain-gauge-card-editor')
 export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implements LovelaceCardEditor {
@@ -47,6 +48,10 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
 
   get _entity(): string {
     return this._config?.entity || '';
+  }
+
+  get _language(): string {
+    return this._config?.language || '';
   }
 
   get _hourly_rate_entity(): string {
@@ -94,6 +99,19 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
         .configValue=${'name'}
         @input=${this._valueChanged}
       ></mwc-textfield>
+      <mwc-select
+        naturalMenuWidth
+        fixedMenuPosition
+        label="Language (Optional)"
+        .configValue=${'language'}
+        .value=${this._language}
+        @selected=${this._valueChanged}
+        @closed=${(ev) => ev.stopPropagation()}
+      >
+        ${CARD_LANGUAGES.map((languageItem) => {
+          return html`<mwc-list-item .value=${languageItem}>${languageItem}</mwc-list-item>`;
+        })}
+      </mwc-select>
       <mwc-textfield
         label="Border colour (Optional)"
         .value=${this._border_colour}

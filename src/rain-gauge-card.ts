@@ -85,16 +85,16 @@ export class RainGaugeCard extends LitElement {
 
     const entityId = this.config.entity;
     const entityState = entityId ? this.hass.states[entityId] : undefined;
-    const stateValue:number = entityState ? parseFloat(entityState.state) : 0;
+    const stateValue: number = entityState ? parseFloat(entityState.state) : 0;
 
-    // 135 min - 5 max
+    // 180 min - 0 max
     const maxLevel = 40
-    let rainLevel = 135
+    let rainLevel = 180
     if (stateValue > 0 && stateValue < maxLevel) {
-      rainLevel = 135 - Math.round(100 / maxLevel * stateValue * 0.74)
+      rainLevel = 180 - Math.round(180 / maxLevel * stateValue)
     }
     if (stateValue >= maxLevel) {
-      rainLevel = 5
+      rainLevel = 0
     }
 
     let borderColour = '#000000'
@@ -121,25 +121,20 @@ export class RainGaugeCard extends LitElement {
           <div style="width: 50%; padding-left: 30px;">
             <div id="banner">
               <div>
-                <svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xml:space="preserve">
-
+                <svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="80%" viewBox="0 0 200 200">
                   <defs>
                     <clipPath id="drop">
-                      <path transform="scale(0.75), translate(32,0)" d="M68.2,6.7c0,0-62.4,70.9-62.4,124.7c0,32.3,28,58.4,62.4,58.4s62.4-26.2,62.4-58.4
-            C130.7,77.6,68.3,6.7,68.2,6.7z" />
+                      <path d="M68.2,6.7c0,0-62.4,70.9-62.4,124.7c0,32.3,28,58.4,62.4,58.4s62.4-26.2,62.4-58.4 C130.7,77.6,68.3,6.7,68.2,6.7z"></path>
                     </clipPath>
                   </defs>
 
                   <g clip-path="url(#drop)">
                     <g class="fill2">
-                      <path fill="#04ACFF" id="waveShape" d="M300,300V2.5c0,0-0.6-0.1-1.1-0.1c0,0-25.5-2.3-40.5-2.4c-15,0-40.6,2.4-40.6,2.4
-            c-12.3,1.1-30.3,1.8-31.9,1.9c-2-0.1-19.7-0.8-32-1.9c0,0-25.8-2.3-40.8-2.4c-15,0-40.8,2.4-40.8,2.4c-12.3,1.1-30.4,1.8-32,1.9
-            c-2-0.1-20-0.8-32.2-1.9c0,0-3.1-0.3-8.1-0.7V300H300z" transform="translate(0, ${rainLevel})" />
+                      <rect width="130" height="190" style="fill:#04ACFF;" transform="translate(0, ${rainLevel})"/>
                     </g>
                   </g>
-                  <g transform="scale(0.75), translate(32,0)">
-                    <path class="st0" d="M68.2,6.7c0,0-62.4,70.9-62.4,124.7c0,32.3,28,58.4,62.4,58.4s62.4-26.2,62.4-58.4
-            C130.7,77.6,68.3,6.7,68.2,6.7z" style="fill:none; stroke:${borderColour}; stroke-width:4; stroke-miterlimit:5;" />
+                  <g>
+                    <path transform="" class="st0" d="M68.2,6.7c0,0-62.4,70.9-62.4,124.7c0,32.3,28,58.4,62.4,58.4s62.4-26.2,62.4-58.4 C130.7,77.6,68.3,6.7,68.2,6.7z" style="fill:none; stroke:${borderColour}; stroke-width:4; stroke-miterlimit:5;"></path>
                   </g>
                 </svg>
               </div>
@@ -148,7 +143,7 @@ export class RainGaugeCard extends LitElement {
           <div>
             <div>
               <p>
-                <span style="font-weight: bold;">${localize('common.total')}</span><br/>
+                <span style="font-weight: bold;">${localize('common.total', '', '', this.config.language)}</span><br/>
                 ${stateValue} mm
               </p>
             </div>
@@ -164,7 +159,7 @@ export class RainGaugeCard extends LitElement {
   private _showHourlyRate(hourlyRateEntityState: any | undefined, hourlyRateStateValue: number): TemplateResult | void {
     if (hourlyRateEntityState === undefined) return
     return html`<p>
-      <span style="font-weight: bold;">${localize('common.rate')}</span><br/>
+      <span style="font-weight: bold;">${localize('common.rate', '', '', this.config.language)}</span><br/>
       ${hourlyRateStateValue} mm/h
     </p>`
   }
