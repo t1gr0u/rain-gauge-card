@@ -92,7 +92,8 @@ The following languages are supported:
 | --------- | ---------- | --------- | ----------------------------------------------------------------------------------- |
 | English   | `en`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
 | French    | `fr`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
-| Slovenian | `sl`       | v1.0.0    | [@mnheia](https://github.com/mnheia)                                                |
+| Portuguese| `pt`       | v1.1.0    | [@ViPeR5000](https://github.com/viper5000)                                          |
+| Slovenian | `sl`       | v1.1.0    | [@mnheia](https://github.com/mnheia)                                                |
 
 
 ## Thanks to
