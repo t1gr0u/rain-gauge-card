@@ -85,22 +85,23 @@ export class RainGaugeCard extends LitElement {
 
     const entityId = this.config.entity;
     const entityState = entityId ? this.hass.states[entityId] : undefined;
-    let stateValue: number = entityState ? parseFloat(entityState.state) : 0;
+    const stateValue: number = entityState ? parseFloat(entityState.state) : 0;
+    let totalRainValue = stateValue
 
     let unitOfMeasurement = 'mm'
     if (this.config.is_imperial) {
       unitOfMeasurement = 'in'
-      const stateValueConverted = stateValue * 25.4
-      stateValue = Math.round((stateValueConverted + Number.EPSILON) * 100) / 100
+      const totalRainValueConverted = totalRainValue * 25.4
+      totalRainValue = Math.round((totalRainValueConverted + Number.EPSILON) * 100) / 100
     }
 
     // 180 min - 0 max
     const maxLevel = 40
     let rainLevel = 180
-    if (stateValue > 0 && stateValue < maxLevel) {
-      rainLevel = 180 - Math.round(180 / maxLevel * stateValue)
+    if (totalRainValue > 0 && totalRainValue < maxLevel) {
+      rainLevel = 180 - Math.round(180 / maxLevel * totalRainValue)
     }
-    if (stateValue >= maxLevel) {
+    if (totalRainValue >= maxLevel) {
       rainLevel = 0
     }
 
