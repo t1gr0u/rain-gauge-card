@@ -1,11 +1,13 @@
 import * as en from './languages/en.json';
 import * as fr from './languages/fr.json';
+import * as pt from './languages/pt.json';
 import * as sl from './languages/sl.json';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const languages: any = {
   en: en,
   fr: fr,
+  pt: pt,
   sl: sl,
 };
 
