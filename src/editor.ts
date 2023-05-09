@@ -58,6 +58,10 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
     return this._config?.language || '';
   }
 
+  get _max_level(): number | string {
+    return this._config?.max_level || '';
+  }
+
   get _hourly_rate_entity(): string {
     return this._config?.hourly_rate_entity || '';
   }
@@ -127,6 +131,15 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
         label="Border colour (Optional)"
         .value=${this._border_colour}
         .configValue=${'border_colour'}
+        @input=${this._valueChanged}
+      ></mwc-textfield>
+      <mwc-textfield
+        label="Max level (Optional)"
+        max=200
+        min=1
+        step=1
+        .value=${this._max_level}
+        .configValue=${'max_level'}
         @input=${this._valueChanged}
       ></mwc-textfield>
       <mwc-select

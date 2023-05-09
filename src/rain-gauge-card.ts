@@ -86,17 +86,27 @@ export class RainGaugeCard extends LitElement {
     const entityId = this.config.entity;
     const entityState = entityId ? this.hass.states[entityId] : undefined;
     const stateValue: number = entityState ? parseFloat(entityState.state) : 0;
-    let totalRainValue = stateValue
+    let totalRainValue = stateValue;
+    let maxLevelOverride: number = this.config.max_level ? this.config.max_level : 0;
+
+    let maxLevel = 40
 
     let unitOfMeasurement = 'mm'
     if (this.config.is_imperial) {
       unitOfMeasurement = 'in'
-      const totalRainValueConverted = totalRainValue * 25.4
-      totalRainValue = Math.round((totalRainValueConverted + Number.EPSILON) * 100) / 100
+      // const totalRainValueConverted = totalRainValue * 25.4
+      // totalRainValue = Math.round((totalRainValueConverted + Number.EPSILON) * 100) / 100
+      totalRainValue = this._inches2mm(totalRainValue);
+      if (maxLevelOverride > 0) {
+        maxLevelOverride = this._inches2mm(maxLevelOverride);
+      }
+    }
+
+    if (maxLevelOverride && maxLevelOverride > maxLevel) {
+      maxLevel = maxLevelOverride
     }
 
     // 180 min - 0 max
-    const maxLevel = 40
     let rainLevel = 180
     if (totalRainValue > 0 && totalRainValue < maxLevel) {
       rainLevel = 180 - Math.round(180 / maxLevel * totalRainValue)
@@ -191,6 +201,11 @@ export class RainGaugeCard extends LitElement {
     });
 
     return html` ${errorCard} `;
+  }
+
+  private _inches2mm(value: number): number {
+    const valueConverted = value * 25.4
+    return Math.round((valueConverted + Number.EPSILON) * 100) / 100
   }
 
   // https://lit.dev/docs/components/styles/

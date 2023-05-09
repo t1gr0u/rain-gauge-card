@@ -58,20 +58,21 @@ entity: sensor.rain_daily
 
 ## Options
 
-| Name              | Type    | Requirement  | Description                                 | Default             |
-| ----------------- | ------- | ------------ | ------------------------------------------- | ------------------- |
-| type              | string  | **Required** | `custom:rain-gauge-card`                    |                     |
-| name              | string  | **Optional** | Card name                                   | `Rain Gauge`        |
-| border_colour     | string  | **Optional** | Change the border colour                    | `#000000`           |
-| show_error        | boolean | **Optional** | Show what an error looks like for the card  | `false`             |
-| show_warning      | boolean | **Optional** | Show what a warning looks like for the card | `false`             |
-| entity            | string  | **Required** | Home Assistant entity ID.                   | `none`              |
-| language          | string  | **Optional** | The 2 character that determines the language| `en`                |
-| is_imperial       | boolean | **Optional** | Switch to inches (`in`) instead of `mm`     | `false`             |
-| hourly_rate_entity| string  | **Optional** | Home Assistant entity ID to hourly rate     | `none`              |
-| tap_action        | object  | **Optional** | Action to take on tap                       | `action: more-info` |
-| hold_action       | object  | **Optional** | Action to take on hold                      | `none`              |
-| double_tap_action | object  | **Optional** | Action to take on double tap                | `none`              |
+| Name              | Type    | Requirement  | Description                                                              | Default             |
+| ----------------- | ------- | ------------ | ------------------------------------------------------------------------ | ------------------- |
+| type              | string  | **Required** | `custom:rain-gauge-card`                                                 |                     |
+| name              | string  | **Optional** | Card name                                                                | `Rain Gauge`        |
+| border_colour     | string  | **Optional** | Change the border colour                                                 | `#000000`           |
+| show_error        | boolean | **Optional** | Show what an error looks like for the card                               | `false`             |
+| show_warning      | boolean | **Optional** | Show what a warning looks like for the card                              | `false`             |
+| entity            | string  | **Required** | Home Assistant entity ID.                                                | `none`              |
+| max_level         | number  | **Optional** | Override the max level in the drop (will take inches too)                | `40mm`              |
+| language          | string  | **Optional** | The 2 character that determines the language                             | `en`                |
+| is_imperial       | boolean | **Optional** | Switch to inches (`in`) instead of `mm`                                  | `false`             |
+| hourly_rate_entity| string  | **Optional** | Home Assistant entity ID to hourly rate                                  | `none`              |
+| tap_action        | object  | **Optional** | Action to take on tap                                                    | `action: more-info` |
+| hold_action       | object  | **Optional** | Action to take on hold                                                   | `none`              |
+| double_tap_action | object  | **Optional** | Action to take on double tap                                             | `none`              |
 
 ## Action Options
 
