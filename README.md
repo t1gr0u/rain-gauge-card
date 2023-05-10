@@ -99,6 +99,7 @@ The following languages are supported:
 | Slovenian | `sl`       | v1.1.0    | [@mnheia](https://github.com/mnheia)                                                |
 | Dutch     | `nl`       | v1.4.0    | [@jobvk](https://github.com/jobvk)                                                  |
 
+
 ## Thanks to
 
 - [@iantrich](https://www.github.com/iantrich) for the [boiler-plate card](https://github.com/custom-cards/boilerplate-card), which got me started
