@@ -1,0 +1,10 @@
+{
+  "common": {
+    "version": "Version",
+    "invalid_configuration": "Ugyldig konfiguration",
+    "show_warning": "Vis advarsel",
+    "show_error": "Vis fejl",
+    "rate": "Rate",
+    "total": "Total"
+  }
+}
