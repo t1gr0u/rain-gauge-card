@@ -11,7 +11,7 @@
     "custom-cards"
   ],
   "module": "rain-gauge-card.js",
-  "repository": "git@github.com:AndLindemann/rain-gauge-card.git",
+  "repository": "git@github.com:t1gr0u/rain-gauge-card.git",
   "author": "T1gr0u <tigrou.m@gmail.com>",
   "license": "MIT",
   "dependencies": {
