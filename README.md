@@ -93,10 +93,12 @@ The following languages are supported:
 
 | Language  | Yaml value | Supported | Translated by                                                                       |
 | --------- | ---------- | --------- | ----------------------------------------------------------------------------------- |
+| Czech     | `cs`       | v1.2.0    | [@MiisaTrAnCe](https://github.com/MiisaTrAnCe)                                      |
 | English   | `en`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
 | French    | `fr`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
 | Portuguese| `pt`       | v1.1.0    | [@ViPeR5000](https://github.com/viper5000)                                          |
 | Slovenian | `sl`       | v1.1.0    | [@mnheia](https://github.com/mnheia)                                                |
+| Dutch     | `nl`       | v1.4.0    | [@jobvk](https://github.com/jobvk)                                                  |
 
 
 ## Thanks to
