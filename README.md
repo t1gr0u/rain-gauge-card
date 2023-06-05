@@ -93,13 +93,24 @@ The following languages are supported:
 
 | Language  | Yaml value | Supported | Translated by                                                                       |
 | --------- | ---------- | --------- | ----------------------------------------------------------------------------------- |
-| Czech     | `cs`       | v1.2.0    | [@MiisaTrAnCe](https://github.com/MiisaTrAnCe)                                      |
+| Czech     | `cs`       | v1.3.1    | [@MiisaTrAnCe](https://github.com/MiisaTrAnCe)                                      |
+| Danish    | `da`       | v1.3.1    | [@Tntdruid](https://github.com/Tntdruid)                                            |
+| Dutch     | `nl`       | v1.3.1    | [@jobvk](https://github.com/jobvk)                                                  |
 | English   | `en`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
 | French    | `fr`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
+| German    | `de`       | v1.3.1    | [@AndLindemann](https://github.com/AndLindemann)                                    |
+| Hungarian | `ha`       | v1.3.1    | [@erelke](https://github.com/erelke)                                                |
 | Portuguese| `pt`       | v1.1.0    | [@ViPeR5000](https://github.com/viper5000)                                          |
 | Slovenian | `sl`       | v1.1.0    | [@mnheia](https://github.com/mnheia)                                                |
-| Dutch     | `nl`       | v1.4.0    | [@jobvk](https://github.com/jobvk)                                                  |
 
+#### How to add a language
+
+If you wish to add a language please follow these steps:
+
+* Go into the `src/localize/languages/` folder
+* Duplicate the `en.json` and name it as the language that you would like to add by following the [2 characters ISO language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+* Then modify the `localize.ts` file, located in `src/localize/` to include your language file.
+* Update the `Readme.md`, found in `src/` to include your language and your Github username in the language table.
 
 ## Thanks to
 
