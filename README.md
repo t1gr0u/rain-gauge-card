@@ -102,6 +102,7 @@ The following languages are supported:
 | Hungarian | `ha`       | v1.3.1    | [@erelke](https://github.com/erelke)                                                |
 | Portuguese| `pt`       | v1.1.0    | [@ViPeR5000](https://github.com/viper5000)                                          |
 | Slovenian | `sl`       | v1.1.0    | [@mnheia](https://github.com/mnheia)                                                |
+| Swedish   | `sv`       | v1.3.1    | [@tangix](https://github.com/tangix)                                                |
 
 #### How to add a language
 
