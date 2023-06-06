@@ -1,0 +1,10 @@
+{
+  "common": {
+    "version": "Verzia",
+    "invalid_configuration": "Neplatná konfigurácia",
+    "show_warning": "Zobraziť varovanie",
+    "show_error": "Zobraziť chybu",
+    "rate": "Intenzita",
+    "total": "Celkom"
+  }
+}
