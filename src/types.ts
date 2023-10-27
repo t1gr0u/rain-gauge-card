@@ -19,6 +19,7 @@ export interface RainGaugeCardConfig extends LovelaceCardConfig {
   is_imperial?: boolean;
   max_level?: number;
   hourly_rate_entity?: string;
+  fill_drop_colour?: string;
   tap_action?: ActionConfig;
   hold_action?: ActionConfig;
   double_tap_action?: ActionConfig;

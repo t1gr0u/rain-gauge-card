@@ -102,7 +102,7 @@ export class RainGaugeCard extends LitElement {
       }
     }
 
-    if (maxLevelOverride && maxLevelOverride > maxLevel) {
+    if (maxLevelOverride) {
       maxLevel = maxLevelOverride
     }
 
@@ -118,6 +118,11 @@ export class RainGaugeCard extends LitElement {
     let borderColour = '#000000'
     if (this.config.border_colour) {
       borderColour = this.config.border_colour
+    }
+
+    let fillDropColour = '#04ACFF'
+    if (this.config.fill_drop_colour) {
+      fillDropColour = this.config.fill_drop_colour
     }
 
     const hourlyRateEntityId = this.config.hourly_rate_entity;
@@ -148,7 +153,7 @@ export class RainGaugeCard extends LitElement {
 
                   <g clip-path="url(#drop)">
                     <g class="fill2">
-                      <rect width="130" height="190" style="fill:#04ACFF;" transform="translate(0, ${rainLevel})"/>
+                      <rect width="130" height="190" style="fill:${fillDropColour};" transform="translate(0, ${rainLevel})"/>
                     </g>
                   </g>
                   <g>

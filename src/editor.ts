@@ -70,6 +70,10 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
     return this._config?.border_colour || '';
   }
 
+  get _fill_drop_colour(): string {
+    return this._config?.fill_drop_colour || '';
+  }
+
   get _show_warning(): boolean {
     return this._config?.show_warning || false;
   }
@@ -105,6 +109,12 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
         label="Name (Optional)"
         .value=${this._name}
         .configValue=${'name'}
+        @input=${this._valueChanged}
+      ></mwc-textfield>
+      <mwc-textfield
+        label="Fill drop colour (Optional)"
+        .value=${this._fill_drop_colour}
+        .configValue=${'fill_drop_colour'}
         @input=${this._valueChanged}
       ></mwc-textfield>
       <mwc-formfield .label=${`Is imperial?`}>

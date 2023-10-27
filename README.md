@@ -63,6 +63,7 @@ entity: sensor.rain_daily
 | type              | string  | **Required** | `custom:rain-gauge-card`                                                 |                     |
 | name              | string  | **Optional** | Card name                                                                | `Rain Gauge`        |
 | border_colour     | string  | **Optional** | Change the border colour                                                 | `#000000`           |
+| fill_drop_colour  | string  | **Optional** | Change the drop colour                                                   | `#04ACFF`           |
 | show_error        | boolean | **Optional** | Show what an error looks like for the card                               | `false`             |
 | show_warning      | boolean | **Optional** | Show what a warning looks like for the card                              | `false`             |
 | entity            | string  | **Required** | Home Assistant entity ID.                                                | `none`              |
