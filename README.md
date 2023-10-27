@@ -98,13 +98,13 @@ The following languages are supported:
 | Dutch     | `nl`       | v1.3.1    | [@jobvk](https://github.com/jobvk)                                                  |
 | English   | `en`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
 | French    | `fr`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
-| Italian   | `it`       | v1.0.0    | [@StefanoGiugliano](https://github.com/StefanoGiugliano)                            |
+| Italian   | `it`       | v1.4.0    | [@StefanoGiugliano](https://github.com/StefanoGiugliano)                            |
 | German    | `de`       | v1.3.1    | [@AndLindemann](https://github.com/AndLindemann)                                    |
 | Hungarian | `ha`       | v1.3.1    | [@erelke](https://github.com/erelke)                                                |
 | Portuguese| `pt`       | v1.1.0    | [@ViPeR5000](https://github.com/viper5000)                                          |
-| Slovakia  | `sk`       | v1.1.0    | [@milandzuris](https://github.com/milandzuris)                                      |
+| Slovakia  | `sk`       | v1.4.0    | [@milandzuris](https://github.com/milandzuris)                                      |
 | Slovenian | `sl`       | v1.1.0    | [@mnheia](https://github.com/mnheia)                                                |
-| Swedish   | `sv`       | v1.3.1    | [@tangix](https://github.com/tangix)                                                |
+| Swedish   | `sv`       | v1.4.0    | [@tangix](https://github.com/tangix)                                                |
 
 #### How to add a language
 
