@@ -16,6 +16,7 @@ export interface RainGaugeCardConfig extends LovelaceCardConfig {
   test_gui?: boolean;
   entity?: string;
   language?: string;
+  hide_units?: boolean;
   is_imperial?: boolean;
   max_level?: number;
   hourly_rate_entity?: string;

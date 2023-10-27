@@ -91,6 +91,8 @@ export class RainGaugeCard extends LitElement {
 
     let maxLevel = 40
 
+    const hideUnits = this.config.hide_units || false
+
     let unitOfMeasurement = 'mm'
     if (this.config.is_imperial) {
       unitOfMeasurement = 'in'
@@ -164,17 +166,7 @@ export class RainGaugeCard extends LitElement {
               </div>
             </div>
           </div>
-          <div>
-            <div>
-              <p>
-                <span style="font-weight: bold;">${localize('common.total', '', '', this.config.language)}</span><br/>
-                ${stateValue} ${unitOfMeasurement}
-              </p>
-            </div>
-            <div>
-              ${this._showHourlyRate(hourlyRateEntityState, hourlyRateStateValue, unitOfMeasurement)}
-            </div>
-          </div>
+          ${this._showUnits(hideUnits, stateValue, hourlyRateEntityState, hourlyRateStateValue, unitOfMeasurement)}
         </div>
       </ha-card>
     `;
@@ -186,6 +178,21 @@ export class RainGaugeCard extends LitElement {
       <span style="font-weight: bold;">${localize('common.rate', '', '', this.config.language)}</span><br/>
       ${hourlyRateStateValue} ${unitOfMeasurement}/h
     </p>`
+  }
+
+  private _showUnits(hide: boolean, stateValue: number, hourlyRateEntityState: any | undefined, hourlyRateStateValue: number, unitOfMeasurement: string): TemplateResult | void {
+    if (hide) return
+    return html`<div>
+      <div>
+        <p>
+          <span style="font-weight: bold;">${localize('common.total', '', '', this.config.language)}</span><br/>
+          ${stateValue} ${unitOfMeasurement}
+        </p>
+      </div>
+      <div>
+        ${this._showHourlyRate(hourlyRateEntityState, hourlyRateStateValue, unitOfMeasurement)}
+      </div>
+    </div>`
   }
 
   private _handleAction(ev: ActionHandlerEvent): void {
