@@ -98,6 +98,7 @@ The following languages are supported:
 | Dutch     | `nl`       | v1.3.1    | [@jobvk](https://github.com/jobvk)                                                  |
 | English   | `en`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
 | French    | `fr`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
+| Italian   | `it`       | v1.0.0    | [@StefanoGiugliano](https://github.com/StefanoGiugliano)                            |
 | German    | `de`       | v1.3.1    | [@AndLindemann](https://github.com/AndLindemann)                                    |
 | Hungarian | `ha`       | v1.3.1    | [@erelke](https://github.com/erelke)                                                |
 | Portuguese| `pt`       | v1.1.0    | [@ViPeR5000](https://github.com/viper5000)                                          |
