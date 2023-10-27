@@ -106,10 +106,11 @@ export class RainGaugeCard extends LitElement {
       maxLevel = maxLevelOverride
     }
 
-    // 180 min - 0 max
-    let rainLevel = 180
+    // 188 min - 0 max
+    const rainDropBoxHeight = 188
+    let rainLevel = rainDropBoxHeight
     if (totalRainValue > 0 && totalRainValue < maxLevel) {
-      rainLevel = 180 - Math.round(180 / maxLevel * totalRainValue)
+      rainLevel = rainDropBoxHeight - Math.round(rainDropBoxHeight / maxLevel * totalRainValue)
     }
     if (totalRainValue >= maxLevel) {
       rainLevel = 0
