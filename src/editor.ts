@@ -50,6 +50,10 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
     return this._config?.entity || '';
   }
 
+  get _hide_units(): boolean {
+    return this._config?.hide_units || false;
+  }
+
   get _is_imperial(): boolean {
     return this._config?.is_imperial || false;
   }
@@ -117,6 +121,13 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
         .configValue=${'fill_drop_colour'}
         @input=${this._valueChanged}
       ></mwc-textfield>
+      <mwc-formfield .label=${`Show units?`}>
+        <mwc-switch
+          .checked=${this._hide_units !== false}
+          .configValue=${'hide_units'}
+          @change=${this._valueChanged}
+        ></mwc-switch>
+      </mwc-formfield>
       <mwc-formfield .label=${`Is imperial?`}>
         <mwc-switch
           .checked=${this._is_imperial !== false}
