@@ -98,6 +98,7 @@ The following languages are supported:
 | Danish    | `da`       | v1.3.1    | [@Tntdruid](https://github.com/Tntdruid)                                            |
 | Dutch     | `nl`       | v1.3.1    | [@jobvk](https://github.com/jobvk)                                                  |
 | English   | `en`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
+| Finnish   | `fi`       |           | [@jesmak](https://github.com/jesmak)                                                |
 | French    | `fr`       | v1.0.0    | [@t1gr0u](https://github.com/t1gr0u)                                                |
 | Italian   | `it`       | v1.4.0    | [@StefanoGiugliano](https://github.com/StefanoGiugliano)                            |
 | German    | `de`       | v1.3.1    | [@AndLindemann](https://github.com/AndLindemann)                                    |
