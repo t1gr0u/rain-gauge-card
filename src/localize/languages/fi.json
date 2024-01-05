@@ -1,0 +1,10 @@
+{
+  "common": {
+    "version": "Versio",
+    "invalid_configuration": "Virheellinen konfiguraatio",
+    "show_warning": "Näytä varoitus",
+    "show_error": "Näytä virhe",
+    "rate": "Sademäärä",
+    "total": "Kokonaiskertymä"
+  }
+}
