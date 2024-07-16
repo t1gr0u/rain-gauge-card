@@ -1,0 +1,10 @@
+{
+  "common": {
+    "version": "Wersja",
+    "invalid_configuration": "Błędna konfiguracja",
+    "show_warning": "Pokaż ostrzeżenie",
+    "show_error": "Pokaż błąd",
+    "rate": "Natężenie",
+    "total": "Suma"
+  }
+}
