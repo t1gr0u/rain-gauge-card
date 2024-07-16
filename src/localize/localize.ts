@@ -21,6 +21,7 @@ const languages: any = {
   sk: sk,
   sl: sl,
   sv: sv,
+  pl: pl,
 };
 
 export const CARD_LANGUAGES = [...Object.keys(languages), ''].sort();
