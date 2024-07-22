@@ -102,6 +102,7 @@ The following languages are supported:
 | Italian   | `it`       | v1.4.0    | [@StefanoGiugliano](https://github.com/StefanoGiugliano)                            |
 | German    | `de`       | v1.3.1    | [@AndLindemann](https://github.com/AndLindemann)                                    |
 | Hungarian | `ha`       | v1.3.1    | [@erelke](https://github.com/erelke)                                                |
+| Polish    | `pl`       | v1.4.0    | [@kauczu](https://github.com/kauczu)                                          |
 | Portuguese| `pt`       | v1.1.0    | [@ViPeR5000](https://github.com/viper5000)                                          |
 | Slovakia  | `sk`       | v1.4.0    | [@milandzuris](https://github.com/milandzuris)                                      |
 | Slovenian | `sl`       | v1.1.0    | [@mnheia](https://github.com/mnheia)                                                |
