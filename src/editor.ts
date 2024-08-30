@@ -62,6 +62,10 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
     return this._config?.max_level || '';
   }
 
+  get _precision_display(): number | string {
+    return this._config?.precision_display || '';
+  }
+
   get _hourly_rate_entity(): string {
     return this._config?.hourly_rate_entity || '';
   }
@@ -150,6 +154,15 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
         step=1
         .value=${this._max_level}
         .configValue=${'max_level'}
+        @input=${this._valueChanged}
+      ></mwc-textfield>
+      <mwc-textfield
+        label="Precision Display (Optional)"
+        max=3
+        min=0
+        step=1
+        .value=${this._precision_display}
+        .configValue=${'precision_display'}
         @input=${this._valueChanged}
       ></mwc-textfield>
       <mwc-select
