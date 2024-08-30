@@ -103,8 +103,8 @@ export class RainGaugeCard extends LitElement {
       }
     }
 
-    if (this.config.precision_display) {
-      stateValueStr = stateValue.toFixed(this.config.precision_display)
+    if (this.config.display_precision) {
+      stateValueStr = stateValue.toFixed(this.config.display_precision)
     }
 
     if (maxLevelOverride) {
@@ -136,8 +136,8 @@ export class RainGaugeCard extends LitElement {
     const hourlyRateStateValue:number = hourlyRateEntityState ? parseFloat(hourlyRateEntityState.state) : 0;
     let hourlyRateStateValueStr: string = hourlyRateStateValue.toString()
 
-    if (this.config.precision_display) {
-      hourlyRateStateValueStr = hourlyRateStateValue.toFixed(this.config.precision_display)
+    if (this.config.display_precision) {
+      hourlyRateStateValueStr = hourlyRateStateValue.toFixed(this.config.display_precision)
     }
 
     return html`
