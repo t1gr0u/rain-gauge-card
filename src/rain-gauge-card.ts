@@ -133,7 +133,7 @@ export class RainGaugeCard extends LitElement {
 
     const hourlyRateEntityId = this.config.hourly_rate_entity;
     const hourlyRateEntityState = hourlyRateEntityId ? this.hass.states[hourlyRateEntityId] : undefined;
-    const hourlyRateStateValue:number = hourlyRateEntityState ? parseFloat(hourlyRateEntityState.state) : 0;
+    const hourlyRateStateValue:number = (hourlyRateEntityState && hourlyRateEntityState.state != 'unknown' ) ? parseFloat(hourlyRateEntityState.state) : 0;
     let hourlyRateStateValueStr: string = hourlyRateStateValue.toString()
 
     if (this.config.display_precision) {
@@ -191,7 +191,7 @@ export class RainGaugeCard extends LitElement {
   }
 
   private _showHourlyRate(hourlyRateEntityState: any | undefined, hourlyRateStateValueStr: string, unitOfMeasurement: string): TemplateResult | void {
-    if (hourlyRateEntityState === undefined) return
+    if (hourlyRateEntityState == undefined) return
     return html`<p>
       <span style="font-weight: bold;">${localize('common.rate', '', '', this.config.language)}</span><br/>
       ${hourlyRateStateValueStr} ${unitOfMeasurement}/h
