@@ -206,9 +206,9 @@ export class RainGaugeCard extends LitElement {
               </div>
             </div>
           </div>
-          <div>
+          <div style="display: flex; flex-direction: column; justify-content: center; margin-block-end: 10px">
             <div>
-              <p>
+              <p style="margin-block-start: 0px;">
                 <span style="font-weight: bold;">${localize('common.total', '', '', this.config.language)}</span><br/>
                 ${stateValueStr}
               </p>
@@ -227,7 +227,7 @@ export class RainGaugeCard extends LitElement {
 
   private _showHourlyRate(hourlyRateStateValueStr: string | undefined): TemplateResult | void {
     if (hourlyRateStateValueStr == undefined) return
-    return html`<p>
+    return html`<p style="margin-block-start: 0px;">
       <span style="font-weight: bold;">${localize('common.rate', '', '', this.config.language)}</span><br/>
       ${hourlyRateStateValueStr}
     </p>`
@@ -235,7 +235,7 @@ export class RainGaugeCard extends LitElement {
 
   private _showRainStormRain(RainStormStateValueStr: string | undefined): TemplateResult | void {
     if (RainStormStateValueStr == undefined) return
-    return html`<p>
+    return html`<p style="margin-block-start: 0px;">
       <span style="font-weight: bold;">${localize('common.rainstorm', '', '', this.config.language)}</span><br/>
       ${RainStormStateValueStr}
     </p>`
