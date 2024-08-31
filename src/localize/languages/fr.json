@@ -5,6 +5,7 @@
         "show_warning": "Afficher les Avertissements",
         "show_error": "Afficher les Erreurs",
         "rate": "Taux",
-        "total": "Total"
+        "total": "Total",
+        "rainstorm": "Pluie d'Orage"
     }
 }

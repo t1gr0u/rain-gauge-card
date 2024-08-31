@@ -70,6 +70,10 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
     return this._config?.hourly_rate_entity || '';
   }
 
+  get _rainstorm_entity(): string {
+    return this._config?.rainstorm_entity || '';
+  }
+
   get _border_colour(): string {
     return this._config?.border_colour || '';
   }
@@ -176,6 +180,19 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
       >
         ${entities.map((hourly_rate_entity) => {
           return html`<mwc-list-item .value=${hourly_rate_entity}>${hourly_rate_entity}</mwc-list-item>`;
+        })}
+      </mwc-select>
+      <mwc-select
+        naturalMenuWidth
+        fixedMenuPosition
+        label="RainStorm Entity (Optional)"
+        .configValue=${'rainstorm_entity'}
+        .value=${this._rainstorm_entity}
+        @selected=${this._valueChanged}
+        @closed=${(ev) => ev.stopPropagation()}
+      >
+        ${entities.map((rainstorm_entity) => {
+          return html`<mwc-list-item .value=${rainstorm_entity}>${rainstorm_entity}</mwc-list-item>`;
         })}
       </mwc-select>
       <mwc-formfield .label=${`Toggle warning ${this._show_warning ? 'off' : 'on'}`}>
