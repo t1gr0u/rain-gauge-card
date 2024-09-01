@@ -185,7 +185,7 @@ export class RainGaugeCardEditor extends ScopedRegistryHost(LitElement) implemen
       <mwc-select
         naturalMenuWidth
         fixedMenuPosition
-        label="RainStorm Entity (Optional)"
+        label="Rainstorm Entity (Optional)"
         .configValue=${'rainstorm_entity'}
         .value=${this._rainstorm_entity}
         @selected=${this._valueChanged}
