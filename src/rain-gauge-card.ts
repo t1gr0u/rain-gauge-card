@@ -11,11 +11,18 @@ import {
   getLovelace,
 } from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
 
+import {
+  HassEntity
+} from 'home-assistant-js-websocket'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
+
 import type { RainGaugeCardConfig } from './types';
 import { actionHandler } from './action-handler-directive';
 import { CARD_VERSION } from './const';
 import { localize } from './localize/localize';
 
+export interface RainGaugeCardHomeAssistant extends HomeAssistant {
+  formatEntityState: (stateObj: HassEntity, state?: string) => string; /* Since Home Assistant Core 2023.9 release */
+}
 /* eslint no-console: 0 */
 console.info(
   `%c  RAIN-GAUGE-CARD \n%c  ${localize('common.version')} ${CARD_VERSION}    `,
@@ -44,7 +51,7 @@ export class RainGaugeCard extends LitElement {
 
 
   // https://lit.dev/docs/components/properties/
-  @property({ attribute: false }) public hass!: HomeAssistant;
+  @property({ attribute: false }) public hass!: RainGaugeCardHomeAssistant;
 
   @state() private config!: RainGaugeCardConfig;
 
@@ -85,23 +92,32 @@ export class RainGaugeCard extends LitElement {
 
     const entityId = this.config.entity;
     const entityState = entityId ? this.hass.states[entityId] : undefined;
-    const stateValue: number = entityState ? parseFloat(entityState.state) : 0;
+    const stateValue: number = (entityState != undefined) ? parseFloat(entityState.state) : 0;
+    let stateValueStr: string | undefined = undefined;
+
+    if (!this.config.display_precision) {
+      try {
+        if (entityState != undefined) {
+          stateValueStr = this.hass.formatEntityState(entityState)
+        }
+      } catch { }
+    }
+
     let totalRainValue = stateValue;
     let maxLevelOverride: number = this.config.max_level ? this.config.max_level : 0;
-
     let maxLevel = 40
 
-    let unitOfMeasurement = 'mm'
+
+    if (stateValueStr == undefined) {
+      stateValueStr = ((this.config.display_precision) ? stateValue.toFixed(this.config.display_precision) : stateValue.toString())+' ' + ((this.config.is_imperial)?'in' : 'mm')
+    }
+
     if (this.config.is_imperial) {
-      unitOfMeasurement = 'in'
-      // const totalRainValueConverted = totalRainValue * 25.4
-      // totalRainValue = Math.round((totalRainValueConverted + Number.EPSILON) * 100) / 100
       totalRainValue = this._inches2mm(totalRainValue);
       if (maxLevelOverride > 0) {
         maxLevelOverride = this._inches2mm(maxLevelOverride);
       }
     }
-
     if (maxLevelOverride) {
       maxLevel = maxLevelOverride
     }
@@ -126,9 +142,39 @@ export class RainGaugeCard extends LitElement {
       fillDropColour = this.config.fill_drop_colour
     }
 
+    let hourlyRateStateValueStr: string | undefined = undefined
     const hourlyRateEntityId = this.config.hourly_rate_entity;
     const hourlyRateEntityState = hourlyRateEntityId ? this.hass.states[hourlyRateEntityId] : undefined;
-    const hourlyRateStateValue:number = hourlyRateEntityState ? parseFloat(hourlyRateEntityState.state) : 0;
+    const hourlyRateStateValue: number = (hourlyRateEntityState != undefined && hourlyRateEntityState.state != 'unknown') ? parseFloat(hourlyRateEntityState.state) : 0;
+
+    if (!this.config.display_precision && hourlyRateEntityState != undefined) {
+      try {
+        hourlyRateStateValueStr = this.hass.formatEntityState(hourlyRateEntityState, ((hourlyRateEntityState != undefined && hourlyRateEntityState.state != 'unknown') ? hourlyRateEntityState.state : '0'));
+      } catch { }
+    }
+
+    if (hourlyRateEntityState != undefined && hourlyRateStateValueStr == undefined) {
+      hourlyRateStateValueStr = ((this.config.display_precision)?hourlyRateStateValue.toFixed(this.config.display_precision):hourlyRateStateValue.toString())+' '+((this.config.is_imperial)?'in' : 'mm')+'/h'
+    }
+
+    let RainStormStateValueStr: string | undefined = undefined
+    const RainStormEntityId = this.config.rainstorm_entity;
+    const RainStormEntityState = RainStormEntityId ? this.hass.states[RainStormEntityId] : undefined;
+    const RainStormStateValue: number = (RainStormEntityState != undefined && RainStormEntityState.state != 'unknown') ? parseFloat(RainStormEntityState.state) : 0;
+
+    if (!this.config.display_precision && RainStormEntityState != undefined && RainStormStateValue != 0) {
+      try {
+        RainStormStateValueStr = this.hass.formatEntityState(RainStormEntityState);
+      } catch { }
+    }
+
+    if (RainStormEntityState != undefined && RainStormStateValueStr == undefined) {
+      if (RainStormStateValue == 0) {
+        RainStormStateValueStr = "--"
+      } else {
+        RainStormStateValueStr = ((this.config.display_precision) ? RainStormStateValue.toFixed(this.config.display_precision) : RainStormStateValue.toString()) + ' ' + ((this.config.is_imperial) ? 'in' : 'mm')
+      }
+    }
 
     return html`
       <ha-card
@@ -164,15 +210,18 @@ export class RainGaugeCard extends LitElement {
               </div>
             </div>
           </div>
-          <div>
+          <div style="display: flex; flex-direction: column; justify-content: center; margin-block-end: 10px">
             <div>
-              <p>
+              <p style="margin-block-start: 0px;">
                 <span style="font-weight: bold;">${localize('common.total', '', '', this.config.language)}</span><br/>
-                ${stateValue} ${unitOfMeasurement}
+                ${stateValueStr}
               </p>
             </div>
             <div>
-              ${this._showHourlyRate(hourlyRateEntityState, hourlyRateStateValue, unitOfMeasurement)}
+              ${this._showHourlyRate(hourlyRateStateValueStr)}
+            </div>
+            <div>
+              ${this._showRainStormRain(RainStormStateValueStr)}
             </div>
           </div>
         </div>
@@ -180,11 +229,19 @@ export class RainGaugeCard extends LitElement {
     `;
   }
 
-  private _showHourlyRate(hourlyRateEntityState: any | undefined, hourlyRateStateValue: number, unitOfMeasurement: string): TemplateResult | void {
-    if (hourlyRateEntityState === undefined) return
-    return html`<p>
+  private _showHourlyRate(hourlyRateStateValueStr: string | undefined): TemplateResult | void {
+    if (hourlyRateStateValueStr == undefined) return
+    return html`<p style="margin-block-start: 0px;">
       <span style="font-weight: bold;">${localize('common.rate', '', '', this.config.language)}</span><br/>
-      ${hourlyRateStateValue} ${unitOfMeasurement}/h
+      ${hourlyRateStateValueStr}
+    </p>`
+  }
+
+  private _showRainStormRain(RainStormStateValueStr: string | undefined): TemplateResult | void {
+    if (RainStormStateValueStr == undefined) return
+    return html`<p style="margin-block-start: 0px;">
+      <span style="font-weight: bold;">${localize('common.rainstorm', '', '', this.config.language)}</span><br/>
+      ${RainStormStateValueStr}
     </p>`
   }
 

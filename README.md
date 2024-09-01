@@ -74,6 +74,9 @@ entity: sensor.rain_daily
 | tap_action        | object  | **Optional** | Action to take on tap                                                    | `action: more-info` |
 | hold_action       | object  | **Optional** | Action to take on hold                                                   | `none`              |
 | double_tap_action | object  | **Optional** | Action to take on double tap                                             | `none`              |
+| rainstorm_entity  | object  | **Optional** | Home Assistant entity ID to RainStorm                                    | `none`              |
+| display_precision | object  | **Optional** | Instead of using Home Assistant entity format force own precision        | `none`              |
+
 
 ## Action Options
 
