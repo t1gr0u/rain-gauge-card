@@ -162,14 +162,18 @@ export class RainGaugeCard extends LitElement {
     const RainStormEntityState = RainStormEntityId ? this.hass.states[RainStormEntityId] : undefined;
     const RainStormStateValue: number = (RainStormEntityState != undefined && RainStormEntityState.state != 'unknown') ? parseFloat(RainStormEntityState.state) : 0;
 
-    if (!this.config.display_precision && RainStormEntityState != undefined) {
+    if (!this.config.display_precision && RainStormEntityState != undefined && RainStormStateValue != 0) {
       try {
-        RainStormStateValueStr = this.hass.formatEntityState(RainStormEntityState, ((RainStormEntityState != undefined && RainStormEntityState.state != 'unknown') ? RainStormEntityState.state : '0'));
+        RainStormStateValueStr = this.hass.formatEntityState(RainStormEntityState);
       } catch { }
     }
 
     if (RainStormEntityState != undefined && RainStormStateValueStr == undefined) {
-      RainStormStateValueStr = ((this.config.display_precision)?RainStormStateValue.toFixed(this.config.display_precision):RainStormStateValue.toString())+' '+((this.config.is_imperial)?'in' : 'mm')
+      if (RainStormStateValue == 0) {
+        RainStormStateValueStr = "--"
+      } else {
+        RainStormStateValueStr = ((this.config.display_precision) ? RainStormStateValue.toFixed(this.config.display_precision) : RainStormStateValue.toString()) + ' ' + ((this.config.is_imperial) ? 'in' : 'mm')
+      }
     }
 
     return html`
