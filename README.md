@@ -106,6 +106,8 @@ The following languages are supported:
 | Slovakia  | `sk`       | v1.4.0    | [@milandzuris](https://github.com/milandzuris)                                      |
 | Slovenian | `sl`       | v1.1.0    | [@mnheia](https://github.com/mnheia)                                                |
 | Swedish   | `sv`       | v1.4.0    | [@tangix](https://github.com/tangix)                                                |
+| Spanish   | `es`       | v1.4.0    | [@lluiscantoncallau](https://github.com/lluiscantoncallau)                          |
+| Catalan   | `ca`       | v1.4.0    | [@lluiscantoncallau](https://github.com/lluiscantoncallau)                          |
 
 #### How to add a language
 
